@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+ 
+  <title>Presentation</title>
+  <link rel="stylesheet" href="spiderman.css"> <!-- Create a separate CSS file for styling -->
+  <link rel="stylesheet" href="main.css"> <!-- Create a separate CSS file for styling -->
+
+  <link
+  href="https://fonts.googleapis.com/css?family=Ruslan+Display&display=swap"
+  rel="stylesheet"
+/>
+</head>
+
+<body>
+
+ 
+
+
+    <div id="wrapper">
+        <div id="spiderman">
+          <div class="head">
+            <div class="eye-left"></div>
+            <div class="eye-right"></div>
+          </div>
+          <div class="body">
+            <div class="spider"></div>
+            <div class="arm-left"></div>
+            <div class="arm-right"></div>
+          </div>
+          <div class="legs">
+            <div class="boot-left"></div>
+            <div class="boot-right"></div>
+          </div>
+        </div>
+      </div>
+      
+    
+
+<button class="button yes" onclick="yes()">YES</button>
+
+    
+<div class="container2">
+
+    <div class="hello-kitty">
+
+        <div class="speech-bubble">
+             <p>
+                 CAN I PLEASE BE YOUR BOYFRIEND AGAIN?
+            </p>
+
+        </div>
+
+     </div>
+
+</div>
+
+<button class="button no" onclick="no()">NO</button>
+
+<div class="slideshow-container">
+  <div class="slides">
+      <img src="images/bayy.jpg" alt="Slide 1" class="slide">
+      <img src="images/bday.jpg" alt="Slide 2" class="slide">
+      <img src="images/bite.jpg" alt="Slide 3" class="slide">
+      <img src="images/flower.jpg" alt="Slide 4" class="slide">
+      <img src="images/kiss1.jpg" alt="Slide 4" class="slide">
+      <img src="images/movies.jpeg" alt="Slide 4" class="slide">
+      <img src="images/polo.jpg" alt="Slide 4" class="slide">
+      <img src="images/val.jpg" alt="Slide 4" class="slide">
+  </div>
+  <button id="prevBtn">Previous</button>
+  <button id="nextBtn">Next</button>
+</div>
+
+
+
+  
+
+</body>
+
+<script>
+
+    function yes(){
+        window.location.href = 'yes.html';
+       
+    }
+
+    function no(){
+        window.location.href = 'no.html'
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+  let slidesContainer = document.querySelector('.slides');
+  let prevBtn = document.getElementById('prevBtn');
+  let nextBtn = document.getElementById('nextBtn');
+  let currentSlideIndex = 0;
+
+  prevBtn.addEventListener('click', showPrevSlide);
+  nextBtn.addEventListener('click', showNextSlide);
+
+  function showPrevSlide() {
+      if (currentSlideIndex > 0) {
+          currentSlideIndex--;
+          updateSlider();
+      }
+  }
+
+  function showNextSlide() {
+      if (currentSlideIndex < slidesContainer.children.length - 1) {
+          currentSlideIndex++;
+          updateSlider();
+      }
+  }
+
+  function updateSlider() {
+      const slideWidth = slidesContainer.children[0].offsetWidth;
+      const offset = -slideWidth * currentSlideIndex;
+      slidesContainer.style.transform = `translateX(${offset}px)`;
+  }
+
+});
+
+
+// JavaScript for controlling the carousel slider
+let slidesContainer = document.querySelector('.slides');
+let isDragging = false;
+let startPosition = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+
+slidesContainer.addEventListener('mousedown', dragStart);
+slidesContainer.addEventListener('mousemove', throttle(drag, 16)); // Throttle the drag event to every 16ms (approximately 60 frames per second)
+slidesContainer.addEventListener('mouseup', dragEnd);
+slidesContainer.addEventListener('mouseleave', dragEnd);
+
+slidesContainer.addEventListener('touchstart', dragStart);
+slidesContainer.addEventListener('touchmove', throttle(drag, 16)); // Throttle the drag event to every 16ms (approximately 60 frames per second)
+slidesContainer.addEventListener('touchend', dragEnd);
+slidesContainer.addEventListener('touchcancel', dragEnd);
+
+function dragStart(event) {
+    if (event.type === 'touchstart') {
+        startPosition = event.touches[0].clientX;
+    } else {
+        startPosition = event.clientX;
+    }
+    isDragging = true;
+
+    // Store the current translate value
+    prevTranslate = currentTranslate;
+}
+
+function drag(event) {
+    if (isDragging) {
+        let currentPosition;
+        if (event.type === 'touchmove') {
+            currentPosition = event.touches[0].clientX;
+        } else {
+            currentPosition = event.clientX;
+        }
+        const diff = currentPosition - startPosition;
+        currentTranslate = prevTranslate + diff;
+        slidesContainer.style.transform = `translateX(${currentTranslate}px)`;
+    }
+}
+
+function dragEnd() {
+    isDragging = false;
+}
+
+// Throttle function to limit the rate of execution of a function
+function throttle(func, delay) {
+    let timeout;
+    return function (...args) {
+        if (!timeout) {
+            timeout = setTimeout(() => {
+                func.apply(this, args);
+                timeout = null;
+            }, delay);
+        }
+    };
+}
+
+
+</script>

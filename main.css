@@ -1,0 +1,172 @@
+body {
+    background-color: pink; /* Initial background color */
+    animation: changeColor 10s infinite alternate; /* Apply animation */
+}
+
+@keyframes changeColor {
+    0% {
+        background-color: pink; /* Initial background color */
+    }
+    50% {
+        background-color: #ff99cc; /* Intermediate color */
+    }
+    100% {
+        background-color: #ffcccc; /* Final background color */
+    }
+}
+@keyframes helloKittyWave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-20deg);
+    }
+    75% {
+        transform: rotate(20deg);
+    }
+}
+
+.text {
+    font-size: 50px;
+}
+.container2 {
+    position: absolute;
+    top: 60%;
+    right: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.hello-kitty {
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    background-image: url('images/hellokitty.png'); /* Replace 'hello_kitty.png' with the path to your Hello Kitty image */
+    background-size: cover;
+    transform: translate(-50%, -50%);
+    animation: helloKittyWave 2s infinite;
+
+}
+.speech-bubble {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    bottom: 120%; /* Adjust the distance from Hello Kitty */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+}
+
+.speech-bubble p {
+    margin: 0;
+    font-size: 32px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative; /* Position relative to the container */
+    bottom: 50%; 
+}
+
+.button:hover {
+    background-color: #adadad;
+}
+
+.yes {
+    position: absolute;
+    left: 200px
+}
+
+.no {
+    position: absolute;
+    right: 400px;
+    background-color: red;
+
+}
+
+.hellokitty {
+    width: 50%; /* Adjust the width as needed */
+    max-width: 600px; /* Adjust the maximum width as needed */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Make the image a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Style for the "Go Back" button */
+.go-back-button {
+    display: block; /* Make the button a block element */
+    width: 300px; /* Adjust the width as needed */
+    padding: 20px; /* Adjust the padding as needed */
+    background-color: #ff2121; /* Green background */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 10px; /* Rounded corners */
+    margin: 20px auto; /* Center the button horizontally with some margin */
+    font-size: 25px;
+}
+
+/* Styles for the slideshow */
+.slideshow-container {
+    position: fixed;
+    bottom: 20px; /* Adjust the distance from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Adjust width as needed */
+    max-width: 800px; /* Maximum width to ensure the container doesn't become too large */
+    height: auto; /* Adjust height as needed */
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Adjust width to fit all slides */
+    height: auto; /* Adjust height to fit all slides */
+    transition: transform 0.5s ease; /* Smooth transition effect */
+}
+
+.slide {
+    width: 300px; /* Adjust width of slides */
+    height: auto; /* Adjust height of slides */
+    margin: 0 20px; /* Adjust spacing between slides */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+    transition: transform 0.5s ease; /* Smooth transition effect */
+}
+
+
+#prevBtn,
+#nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#prevBtn {
+    left: 6px;
+}
+
+#nextBtn {
+    right: 6px;
+}
+
+.text {
+    color: black;
+    text-decoration: none;
+}
